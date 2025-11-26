@@ -1,0 +1,14 @@
+- id: check-branch-name
+  name: Check Finhay branch naming convention
+  description: Ensures branch names follow pattern (feature|bugfix|hotfix|chore)/TICKET-description
+  entry: hooks/check-branch-name.sh
+  language: script
+  pass_filenames: false
+  always_run: true
+
+- id: check-commit-message
+  name: Check Finhay commit message format
+  description: Ensures commits follow conventional commit format
+  entry: hooks/check-commit-msg.sh
+  language: script
+  stages: [commit-msg]

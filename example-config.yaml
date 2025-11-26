@@ -1,0 +1,103 @@
+# Example .pre-commit-config.yaml for projects using Finhay Git Hooks
+#
+# Copy this file to your project root as .pre-commit-config.yaml
+# Then run: pre-commit install && pre-commit install --hook-type commit-msg
+
+repos:
+  # Finhay shared hooks
+  - repo: https://github.com/finhay-pro/finhay-git-hooks
+    rev: v1.0.0  # Always use a specific version tag
+    hooks:
+      - id: check-branch-name
+      - id: check-commit-message
+
+  # Standard pre-commit hooks (recommended for all projects)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace        # Remove trailing whitespace
+      - id: end-of-file-fixer          # Ensure files end with newline
+      - id: check-yaml                 # Validate YAML files
+      - id: check-json                 # Validate JSON files
+      - id: check-merge-conflict       # Check for merge conflict markers
+      - id: detect-private-key         # Detect private keys
+      - id: check-added-large-files    # Prevent large files
+        args: ['--maxkb=500']
+      - id: mixed-line-ending          # Fix mixed line endings
+        args: ['--fix=lf']
+
+  # Security - Detect secrets (recommended)
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: package-lock.json
+
+  # ========================================
+  # Language-specific hooks (uncomment as needed)
+  # ========================================
+
+  # For JavaScript/TypeScript projects
+  # - repo: https://github.com/pre-commit/mirrors-eslint
+  #   rev: v8.56.0
+  #   hooks:
+  #     - id: eslint
+  #       files: \.[jt]sx?$
+  #       args: [--fix]
+  #       additional_dependencies:
+  #         - eslint@8.56.0
+  #         - eslint-config-airbnb-base
+  #         - eslint-plugin-import
+
+  # For Prettier formatting
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: v3.1.0
+  #   hooks:
+  #     - id: prettier
+  #       types_or: [javascript, jsx, ts, tsx, json, yaml, markdown]
+
+  # For Java projects
+  # - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  #   rev: v2.12.0
+  #   hooks:
+  #     - id: pretty-format-java
+  #       args: [--autofix, --google-java-style]
+
+  # For Python projects
+  # - repo: https://github.com/psf/black
+  #   rev: 24.1.0
+  #   hooks:
+  #     - id: black
+  #       language_version: python3.11
+
+  # - repo: https://github.com/pycqa/flake8
+  #   rev: 7.0.0
+  #   hooks:
+  #     - id: flake8
+
+  # For Go projects
+  # - repo: https://github.com/golangci/golangci-lint
+  #   rev: v1.55.2
+  #   hooks:
+  #     - id: golangci-lint
+
+  # ========================================
+  # Project-specific local hooks
+  # ========================================
+
+  # - repo: local
+  #   hooks:
+  #     - id: run-tests
+  #       name: Run unit tests
+  #       entry: npm test
+  #       language: system
+  #       pass_filenames: false
+  #       stages: [push]  # Only run on push, not commit
+
+  #     - id: type-check
+  #       name: TypeScript type check
+  #       entry: npm run type-check
+  #       language: system
+  #       files: \.[jt]sx?$
+  #       pass_filenames: false
