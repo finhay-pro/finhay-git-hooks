@@ -1,10 +1,12 @@
 repos:
+  # Finhay shared hooks
   - repo: https://github.com/finhay-pro/finhay-git-hooks
     rev: v1.0.1
     hooks:
     - id: check-branch-name
     - id: check-commit-message
 
+  # Standard pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:

@@ -70,15 +70,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "📝 Creating .pre-commit-config.yaml..."
     cat > .pre-commit-config.yaml << EOF
 repos:
-# Finhay shared hooks
-- repo: $HOOKS_REPO
+  # Finhay shared hooks
+  - repo: $HOOKS_REPO
     rev: $HOOKS_VERSION
     hooks:
     - id: check-branch-name
     - id: check-commit-message
 
-# Standard pre-commit hooks
-- repo: https://github.com/pre-commit/pre-commit-hooks
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
     - id: trailing-whitespace
@@ -88,7 +88,7 @@ repos:
     - id: check-merge-conflict
     - id: detect-private-key
     - id: check-added-large-files
-        args: ['--maxkb=500']
+      args: ['--maxkb=500']
 EOF
 
     echo "✅ Configuration created"
