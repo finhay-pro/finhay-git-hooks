@@ -71,11 +71,10 @@ refactor(user): simplify user profile update logic
 
 ## 🚀 Quick Install (Recommended)
 
-The easiest way to set up hooks in your project:
+The easiest way to set up hooks in your project. Navigate into your project:
 
 ```bash
-cd /path/to/your/project
-curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh)"
 ```
 
 That's it! The script will:
@@ -87,7 +86,7 @@ That's it! The script will:
 ### Install specific version
 
 ```bash
-FINHAY_HOOKS_VERSION=v1.0.1 curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+/bin/bash -c "$(FINHAY_HOOKS_VERSION=v1.0.1 curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh)"
 ```
 
 ## 📦 Manual Installation
@@ -113,14 +112,14 @@ pre-commit --version
 repos:
   # Finhay shared hooks
   - repo: https://github.com/finhay-pro/finhay-git-hooks
-    rev: v1.0.0  # Use the latest version tag
+    rev: v1.0.1  # Use the latest version tag
     hooks:
       - id: check-branch-name
       - id: check-commit-message
 
   # Standard pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -168,7 +167,7 @@ Or use the quick install script:
 
 ```bash
 cd your-project
-curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh)"
 ```
 
 ## 🧪 Testing
@@ -287,6 +286,6 @@ Internal use only - Finhay Vietnam / VNSC
 
 ---
 
-**Version:** 1.0.0  
-**Last Updated:** November 2024  
+**Version:** 1.0.0
+**Last Updated:** November 2024
 **Maintained by:** Finhay Engineering Team

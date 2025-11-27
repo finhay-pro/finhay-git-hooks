@@ -33,7 +33,7 @@ echo ""
 echo "🔍 Checking for pre-commit..."
 if ! command -v pre-commit &> /dev/null; then
     echo "⚠️  pre-commit not found. Installing..."
-    
+
     # Try pip3 first, then pip
     if command -v pip3 &> /dev/null; then
         pip3 install pre-commit
@@ -48,7 +48,7 @@ if ! command -v pre-commit &> /dev/null; then
         echo ""
         exit 1
     fi
-    
+
     echo "✅ pre-commit installed"
 else
     echo "✅ pre-commit already installed ($(pre-commit --version))"
@@ -79,7 +79,7 @@ repos:
 
 # Standard pre-commit hooks
 - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v6.0.0
     hooks:
     - id: trailing-whitespace
     - id: end-of-file-fixer

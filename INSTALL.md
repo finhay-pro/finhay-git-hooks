@@ -5,7 +5,7 @@ Share this with your team members:
 ## For New Projects or Team Members
 
 ```bash
-cd /path/to/your/project && curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh)"
 ```
 
 ## What This Does
@@ -36,10 +36,10 @@ Full docs: https://github.com/finhay-pro/finhay-git-hooks
 
 ```bash
 # Install specific version
-FINHAY_HOOKS_VERSION=v1.0.1 curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+/bin/bash -c "$(FINHAY_HOOKS_VERSION=v1.0.1 curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh)"
 
 # Always use latest
-curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh)"
 ```
 
 ## Alternative: Manual Install
@@ -94,6 +94,6 @@ git checkout -b my-test  # ❌ Will show error
 # Make a valid commit (will pass)
 git commit -m "feat(test): add new feature"
 
-# Try an invalid commit (will fail)  
+# Try an invalid commit (will fail)
 git commit -m "fixed bug"  # ❌ Will show error
 ```
