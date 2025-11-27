@@ -69,7 +69,30 @@ refactor(user): simplify user profile update logic
 - Start with lowercase letter
 - No period at the end
 
-## 🚀 Usage in Your Project
+## 🚀 Quick Install (Recommended)
+
+The easiest way to set up hooks in your project:
+
+```bash
+cd /path/to/your/project
+curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+```
+
+That's it! The script will:
+- ✅ Check and install pre-commit if needed
+- ✅ Create `.pre-commit-config.yaml`
+- ✅ Install git hooks
+- ✅ Optionally run checks on existing files
+
+### Install specific version
+
+```bash
+FINHAY_HOOKS_VERSION=v1.0.1 curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
+```
+
+## 📦 Manual Installation
+
+If you prefer to install manually:
 
 ### 1. Install pre-commit
 
@@ -95,7 +118,7 @@ repos:
       - id: check-branch-name
       - id: check-commit-message
 
-  # Optional: Add standard pre-commit hooks
+  # Standard pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
@@ -122,56 +145,30 @@ pre-commit install --hook-type commit-msg
 pre-commit run --all-files
 ```
 
-## 🔧 Quick Setup Script
+## 👥 Team Member Setup
 
-Save this as `setup-hooks.sh` in your project:
+After the `.pre-commit-config.yaml` is committed to the repository, team members only need to:
 
 ```bash
-#!/bin/bash
+# Clone the project (or pull latest changes)
+git clone git@github.com:finhay-pro/your-project.git
+cd your-project
 
-echo "🔧 Setting up Finhay Git Hooks..."
+# Install pre-commit (if not already installed)
+pip install pre-commit
 
-# Check if pre-commit is installed
-if ! command -v pre-commit &> /dev/null; then
-    echo "Installing pre-commit..."
-    pip install pre-commit
-fi
-
-# Create .pre-commit-config.yaml if it doesn't exist
-if [ ! -f .pre-commit-config.yaml ]; then
-    cat > .pre-commit-config.yaml << 'EOF'
-repos:
-  - repo: https://github.com/finhay-pro/finhay-git-hooks
-    rev: v1.0.0
-    hooks:
-      - id: check-branch-name
-      - id: check-commit-message
-
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
-    hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-merge-conflict
-EOF
-    echo "✅ Created .pre-commit-config.yaml"
-fi
-
-# Install hooks
+# Activate hooks for this project
 pre-commit install
 pre-commit install --hook-type commit-msg
 
-echo "✅ Git hooks installed successfully!"
-echo ""
-echo "Test your setup:"
-echo "  pre-commit run --all-files"
+# Done! Hooks will now run automatically
 ```
 
-Then run:
+Or use the quick install script:
+
 ```bash
-chmod +x setup-hooks.sh
-./setup-hooks.sh
+cd your-project
+curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash
 ```
 
 ## 🧪 Testing
@@ -231,7 +228,7 @@ SKIP=check-branch-name git commit -m "test commit"
 ### Releasing New Versions
 
 1. Make changes to hooks
-2. Update version in this README
+2. Update version in this README and CHANGELOG.md
 3. Create and push a tag:
 
 ```bash
@@ -253,6 +250,13 @@ repos:
       - id: check-commit-message
 ```
 
+Or use the test script:
+
+```bash
+cd finhay-git-hooks
+./test-hooks.sh
+```
+
 ## 🤝 Contributing
 
 To add new hooks or modify existing ones:
@@ -260,8 +264,8 @@ To add new hooks or modify existing ones:
 1. Create a new branch following our convention
 2. Add/modify hook scripts in `hooks/` directory
 3. Update `.pre-commit-hooks.yaml`
-4. Update this README
-5. Test thoroughly
+4. Update this README and CHANGELOG.md
+5. Test thoroughly with `./test-hooks.sh`
 6. Create a Pull Request
 
 ## 📞 Support
@@ -269,6 +273,14 @@ To add new hooks or modify existing ones:
 For issues or questions:
 - Create an issue in this repository
 - Contact: TuanTM
+
+## 📚 Additional Resources
+
+- [Quick Reference Guide](QUICK_REFERENCE.md) - Printable cheat sheet
+- [Setup Guide](SETUP_GUIDE.md) - Detailed setup instructions
+- [Conventional Commits](https://www.conventionalcommits.org/) - Commit message standard
+- [Pre-commit](https://pre-commit.com/) - Pre-commit framework documentation
+
 ## 📜 License
 
 Internal use only - Finhay Vietnam / VNSC

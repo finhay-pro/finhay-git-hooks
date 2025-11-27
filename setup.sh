@@ -12,6 +12,7 @@ chmod +x hooks/check-branch-name.sh
 chmod +x hooks/check-commit-msg.sh
 chmod +x rollout-hooks.sh
 chmod +x test-hooks.sh
+chmod +x install.sh
 
 echo "✅ Scripts are now executable"
 echo ""
@@ -33,4 +34,7 @@ echo ""
 echo "4. Create version tag:"
 echo "   git tag -a v1.0.0 -m \"Release v1.0.0: Initial release\""
 echo "   git push origin v1.0.0"
+echo ""
+echo "5. Team members can then install with:"
+echo "   curl -fsSL https://raw.githubusercontent.com/finhay-pro/finhay-git-hooks/main/install.sh | bash"
 echo ""
